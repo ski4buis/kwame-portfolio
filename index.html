@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kwame Asare | Mechanical Engineering</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Helvetica Neue',Arial,sans-serif;background:#0A1628;color:#E2E8F0;line-height:1.6}
+  a{color:#C8A84B;text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:#0A1628;border-bottom:1px solid rgba(200,168,75,0.2);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-logo{font-size:16px;font-weight:600;color:#C8A84B;letter-spacing:0.04em}
+  .nav-links{display:flex;gap:24px}
+  .nav-links a{font-size:13px;color:#94A3B8;transition:color 0.2s}
+  .nav-links a:hover{color:#C8A84B;text-decoration:none}
+
+  /* SECTIONS */
+  section{max-width:900px;margin:0 auto;padding:72px 24px}
+  .section-tag{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#C8A84B;font-weight:600;margin-bottom:12px}
+  .section-title{font-size:28px;font-weight:600;color:#fff;margin-bottom:8px}
+  .section-divider{width:40px;height:2px;background:#C8A84B;margin-bottom:32px}
+
+  /* HERO */
+  #hero{max-width:100%;padding:80px 40px;background:linear-gradient(160deg,#0A1628 60%,#0F2240);border-bottom:1px solid rgba(200,168,75,0.15)}
+  .hero-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center}
+  .hero-left{text-align:left}
+  .hero-right{display:flex;justify-content:center;align-items:center}
+  .headshot-frame{position:relative;width:280px;height:340px;border-radius:14px;overflow:hidden;border:1px solid rgba(200,168,75,0.3);box-shadow:0 0 0 1px rgba(200,168,75,0.08), 0 30px 60px -20px rgba(0,0,0,0.6)}
+  .headshot-frame::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,22,40,0.4));z-index:2;pointer-events:none}
+  .headshot-frame img{width:100%;height:100%;object-fit:cover;display:block}
+  #hero .hero-tag{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C8A84B;margin-bottom:16px}
+  #hero h1{font-size:52px;font-weight:700;color:#fff;margin-bottom:16px;letter-spacing:-0.02em;line-height:1.05}
+  #hero .hero-sub{font-size:17px;color:#94A3B8;max-width:560px;margin:0 0 28px}
+  .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+  .hero-badge{font-size:12px;padding:5px 14px;border-radius:20px;background:rgba(200,168,75,0.12);color:#C8A84B;border:1px solid rgba(200,168,75,0.3)}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-gold{font-size:14px;padding:12px 28px;background:#C8A84B;color:#0A1628;border:none;border-radius:6px;cursor:pointer;font-weight:700;letter-spacing:0.02em}
+  .btn-ghost{font-size:14px;padding:12px 28px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.25);border-radius:6px;cursor:pointer}
+
+  /* STATS */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.15);border-radius:10px;overflow:hidden;margin:56px auto 0;max-width:760px}
+  .stat{background:#0F1E35;padding:28px 20px;text-align:center}
+  .stat-num{font-size:32px;font-weight:700;color:#C8A84B}
+  .stat-label{font-size:12px;color:#64748B;margin-top:4px}
+
+  /* ABOUT */
+  #about{background:#0F1E35}
+  #about section{max-width:900px}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .about-text{font-size:15px;color:#94A3B8;line-height:1.8}
+  .about-text p{margin-bottom:16px}
+  .philosophy-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+  .philosophy-item{background:#0A1628;border:1px solid rgba(200,168,75,0.15);border-radius:8px;padding:14px 16px;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+  .philosophy-num{font-size:12px;font-weight:700;color:#C8A84B;letter-spacing:0.05em;padding-top:2px}
+  .philosophy-text{display:flex;flex-direction:column;gap:3px}
+  .philosophy-principle{font-size:14px;font-weight:600;color:#fff}
+  .philosophy-desc{font-size:12px;color:#64748B;line-height:1.5}
+
+  /* EDUCATION */
+  .edu-card{background:#0F1E35;border:1px solid rgba(200,168,75,0.15);border-radius:10px;padding:24px 28px;margin-bottom:16px}
+  .edu-card h3{font-size:17px;font-weight:600;color:#fff;margin-bottom:4px}
+  .edu-card .meta{font-size:13px;color:#C8A84B;margin-bottom:10px}
+  .edu-card p{font-size:14px;color:#94A3B8;line-height:1.7}
+  .course-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .pill{font-size:12px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);color:#94A3B8;border:1px solid rgba(255,255,255,0.08)}
+
+  /* EXPERIENCE */
+  #experience{background:#0F1E35}
+  .exp-item{display:grid;grid-template-columns:120px 1fr;gap:24px;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .exp-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .exp-date{font-size:12px;color:#64748B;padding-top:4px}
+  .exp-content h3{font-size:16px;font-weight:600;color:#fff;margin-bottom:2px}
+  .exp-content .exp-org{font-size:13px;color:#C8A84B;margin-bottom:10px}
+  .exp-content p{font-size:14px;color:#94A3B8;line-height:1.7}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .project-card{background:#0F1E35;border:1px solid rgba(200,168,75,0.15);border-radius:10px;padding:24px;transition:border-color 0.2s}
+  .project-card:hover{border-color:rgba(200,168,75,0.4)}
+  .project-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#C8A84B;margin-bottom:10px}
+  .project-card h3{font-size:17px;font-weight:600;color:#fff;margin-bottom:10px}
+  .project-card p{font-size:13px;color:#94A3B8;line-height:1.7;margin-bottom:16px}
+  .tech-stack{display:flex;gap:6px;flex-wrap:wrap}
+  .tech{font-size:11px;padding:3px 8px;border-radius:4px;background:rgba(200,168,75,0.1);color:#C8A84B;border:1px solid rgba(200,168,75,0.2)}
+
+  /* SKILLS */
+  #skills{background:#0F1E35}
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .skill-stack{background:#0A1628;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:22px}
+  .stack-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .stack-title{font-size:13px;font-weight:600;color:#fff;letter-spacing:0.02em}
+  .stack-tag{font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(200,168,75,0.12);color:#C8A84B;letter-spacing:0.04em;text-transform:uppercase;border:1px solid rgba(200,168,75,0.25)}
+  .skill-tier-group{margin-bottom:14px}
+  .skill-tier-group:last-child{margin-bottom:0}
+  .tier-label{font-size:10px;font-weight:600;color:#64748B;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+  .tier-dot{width:6px;height:6px;border-radius:50%}
+  .tier-proficient .tier-dot{background:#C8A84B}
+  .tier-working .tier-dot{background:#C8A84B;opacity:0.55}
+  .tier-exploring .tier-dot{background:#64748B}
+  .skill-list-tier{display:flex;flex-wrap:wrap;gap:6px}
+  .skill-tag{font-size:11px;padding:4px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:5px;color:#94A3B8}
+
+  /* ORGANIZATIONS */
+  .orgs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .org-card{background:#0F1E35;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:20px;position:relative;overflow:hidden;transition:border-color 0.2s}
+  .org-card.leadership{border-color:rgba(200,168,75,0.3)}
+  .org-card.leadership::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#C8A84B}
+  .org-card:hover{border-color:rgba(200,168,75,0.4)}
+  .org-initial{width:40px;height:40px;border-radius:8px;background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.25);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#C8A84B;margin-bottom:12px}
+  .org-card.leadership .org-initial{background:#C8A84B;color:#0A1628;border-color:#C8A84B}
+  .org-card h4{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+  .org-role-pill{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-bottom:6px}
+  .role-leadership{background:rgba(200,168,75,0.15);color:#C8A84B;border:1px solid rgba(200,168,75,0.3)}
+  .role-member{background:rgba(255,255,255,0.04);color:#64748B;border:1px solid rgba(255,255,255,0.08)}
+  .org-card p{font-size:12px;color:#94A3B8;line-height:1.5}
+
+  /* CONTACT */
+  #contact{background:#0A1628;text-align:center}
+  #contact section{padding-bottom:80px}
+  .contact-sub{font-size:15px;color:#94A3B8;max-width:480px;margin:0 auto 32px}
+  .contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .contact-btn{font-size:14px;padding:12px 24px;border:1px solid rgba(200,168,75,0.3);border-radius:6px;color:#C8A84B;background:transparent;cursor:pointer;transition:background 0.2s}
+  .contact-btn:hover{background:rgba(200,168,75,0.1)}
+
+  /* FOOTER */
+  footer{background:#060E1A;border-top:1px solid rgba(255,255,255,0.05);padding:20px 40px;display:flex;justify-content:space-between;align-items:center}
+  footer p{font-size:12px;color:#334155}
+  footer .footer-links{display:flex;gap:16px}
+  footer .footer-links a{font-size:12px;color:#334155}
+  footer .footer-links a:hover{color:#C8A84B}
+
+  /* PROOF IMAGES */
+  .proof-block{margin-top:16px;border-radius:10px;overflow:hidden;background:#0A1628;border:1px solid rgba(200,168,75,0.15)}
+  .proof-block img{width:100%;display:block}
+  .proof-block img[src*="imgur"]{aspect-ratio:auto;max-height:420px;object-fit:contain;background:#0A1628}
+  .proof-caption{font-size:11px;color:#64748B;padding:10px 14px;letter-spacing:0.04em;text-transform:uppercase}
+  .proof-grid{display:grid;grid-template-columns:2fr 3fr;gap:12px;margin-top:16px}
+  .proof-grid .proof-block{margin-top:0}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    section{padding:56px 20px}
+    .about-grid{grid-template-columns:1fr;gap:32px}
+    .projects-grid{grid-template-columns:1fr}
+    .skills-grid{grid-template-columns:1fr}
+    .orgs-grid{grid-template-columns:repeat(2,1fr)}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:680px){
+    nav{padding:0 16px;height:54px}
+    .nav-logo{font-size:14px}
+    .nav-links{display:none}
+    #hero{padding:64px 20px 56px}
+    #hero h1{font-size:34px;letter-spacing:-0.01em}
+    #hero .hero-sub{font-size:15px}
+    .hero-badges{gap:6px}
+    .hero-badge{font-size:11px;padding:4px 10px}
+    .hero-btns{flex-direction:column;align-items:stretch}
+    .btn-gold, .btn-ghost{width:100%}
+    .stats-grid{grid-template-columns:repeat(2,1fr);margin-top:36px}
+    .stat{padding:20px 12px}
+    .stat-num{font-size:24px}
+    .stat-label{font-size:11px}
+    section{padding:48px 18px}
+    .section-title{font-size:22px}
+    .section-tag{font-size:10px}
+    .edu-card{padding:18px 20px}
+    .edu-card h3{font-size:15px}
+    .edu-card .meta{font-size:12px}
+    .exp-item{grid-template-columns:1fr;gap:8px;margin-bottom:28px;padding-bottom:28px}
+    .exp-date{font-size:11px;color:#C8A84B}
+    .exp-content h3{font-size:15px}
+    .exp-content .exp-org{font-size:12px}
+    .exp-content p{font-size:13px}
+    .project-card{padding:20px}
+    .project-card h3{font-size:16px}
+    .project-card p{font-size:13px}
+    .skill-group{padding:16px}
+    .skill-group h4{font-size:12px}
+    .skill-tag{font-size:11px;padding:4px 8px}
+    .orgs-grid{grid-template-columns:1fr;gap:10px}
+    .org-card{padding:16px 18px;display:flex;align-items:center;gap:14px}
+    .org-initial{margin-bottom:0;flex-shrink:0}
+    .contact-btns{flex-direction:column;align-items:stretch}
+    .contact-btn{width:100%}
+    footer{flex-direction:column;gap:10px;text-align:center;padding:20px}
+  }
+  @media(max-width:380px){
+    #hero h1{font-size:28px}
+    .section-title{font-size:20px}
+    .stats-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">KA</div>
+      <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Leadership</a>
+    <a href="#work">Work</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#organizations">Organizations</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">Mechanical Engineering · Old Dominion University</div>
+      <h1>Kwame Asare</h1>
+      <p class="hero-sub">Freshman ME student building at the intersection of engineering, AI, and systems thinking. Focused on creating leverage, not just credentials.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">Norfolk, VA</span>
+        <span class="hero-badge">Summer 2026 Internship</span>
+        <span class="hero-badge">MITRE · Energy · AI</span>
+        <span class="hero-badge">Class of 2029</span>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-gold">View My Work</button>
+        <button class="btn-ghost">Download Resume</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="headshot-frame">
+        <img src="https://i.imgur.com/8mtlhY2.jpeg" alt="Kwame Asare headshot" />
+      </div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">organizations</div></div>
+    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">members led (BSU)</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">engineers coordinated (drone)</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">incoming leadership roles</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about">
+  <section>
+    <div class="section-tag">About</div>
+    <div class="section-title">Comfort isn't stability.</div>
+    <div class="section-divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I used to think comfort meant stability. I learned the opposite.</p>
+        <p>The shift happened in Richmond, in a room with Matthew Pezzimenti breaking down how passive income works at scale. I walked in assuming the path was good grades, good job, trade hours for dollars, retire. I walked out understanding that time-for-money has a ceiling, and ownership, systems, and leverage are how you break through it.</p>
+        <p>I'm a freshman Mechanical Engineering student at Old Dominion. The degree is a tool, not the destination. I'm building the technical depth, the network, and the discipline to compound over the next 40 years.</p>
+      </div>
+      <div>
+        <div class="section-tag" style="margin-bottom:16px">Operating philosophy</div>
+        <ul class="philosophy-list">
+          <li class="philosophy-item">
+            <div class="philosophy-num">01</div>
+            <div class="philosophy-text">
+              <div class="philosophy-principle">Leverage over labor</div>
+              <div class="philosophy-desc">Time-for-money has a ceiling. Systems, ownership, and compounding break through it.</div>
+            </div>
+          </li>
+          <li class="philosophy-item">
+            <div class="philosophy-num">02</div>
+            <div class="philosophy-text">
+              <div class="philosophy-principle">Systems over randomness</div>
+              <div class="philosophy-desc">Repeatable process beats one-time luck. If it can't be rebuilt, it doesn't count.</div>
+            </div>
+          </li>
+          <li class="philosophy-item">
+            <div class="philosophy-num">03</div>
+            <div class="philosophy-text">
+              <div class="philosophy-principle">Discipline over motivation</div>
+              <div class="philosophy-desc">Motivation is a feeling. Discipline is a decision already made. This one costs me social time, and I pay it.</div>
+            </div>
+          </li>
+          <li class="philosophy-item">
+            <div class="philosophy-num">04</div>
+            <div class="philosophy-text">
+              <div class="philosophy-principle">Ownership over employment</div>
+              <div class="philosophy-desc">Equity compounds. Salaries plateau. I'd rather build something than rent my hours.</div>
+            </div>
+          </li>
+          <li class="philosophy-item">
+            <div class="philosophy-num">05</div>
+            <div class="philosophy-text">
+              <div class="philosophy-principle">Progress over comfort</div>
+              <div class="philosophy-desc">Complacency is the thief of progress. Settling is the real risk, not failing.</div>
+            </div>
+          </li>
+        </ul>
+        <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:#64748B;line-height:1.6">
+          <span style="color:#C8A84B;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;font-size:10px">Influences</span>
+          <div style="margin-top:6px">My father's wisdom. My cousin Lizzy's achievements.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- EDUCATION -->
+<div id="education" style="background:#0A1628">
+  <section>
+    <div class="section-tag">Education</div>
+    <div class="section-title">Academic foundation</div>
+    <div class="section-divider"></div>
+    <div class="edu-card">
+      <h3>Old Dominion University</h3>
+      <div class="meta">B.S. Mechanical Engineering &nbsp;·&nbsp; Expected May 2029 &nbsp;·&nbsp; Norfolk, VA</div>
+      <p>First-year Mechanical Engineering student, second semester. Active across multiple student organizations spanning engineering, culture, and community. Currently targeting a Summer 2026 engineering internship.</p>
+      <div class="course-pills">
+        <span class="pill">MATH 103M</span>
+        <span class="pill">Engineering Fundamentals</span>
+        <span class="pill">Chemistry</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience">
+  <section>
+    <div class="section-tag">Leadership Experience</div>
+    <div class="section-title">Where I lead</div>
+    <div class="section-divider"></div>
+
+    <div class="exp-item">
+      <div class="exp-date">Spring 2026</div>
+      <div class="exp-content">
+        <h3>Co-Facilitator — SUMMIT General Body Meeting</h3>
+        <div class="exp-org">Old Dominion University · SUMMIT</div>
+        <p>First freshman to co-facilitate a SUMMIT General Body Meeting. Led a session on Pan-African intellectual history and the social construction of race alongside Emmanuel Somuah. Format included Kahoot, a physical sorting exercise, and a 12-slide deck. Covered thinkers including Nkrumah, Garvey, Fanon, Diop, Sankara, Du Bois, and Malcolm X post-Mecca.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Starting Fall 2026</div>
+      <div class="exp-content">
+        <h3>Incoming SGA Representative, College of Business</h3>
+        <div class="exp-org">Old Dominion University, Student Government Association</div>
+        <p>Sworn in Spring 2026, starting Fall 2026. Strategic cross-college positioning as an engineering student to build business literacy and institutional connections outside the ME track.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Senior year · 2024–2025</div>
+      <div class="exp-content">
+        <h3>President — Black Student Union</h3>
+        <div class="exp-org">Massaponax High School</div>
+        <p>Led a 50+ member organization through weekly meetings, event planning, and budget oversight. Launched member-driven initiatives that set the foundation for the leadership approach I bring into ODU.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WORK EXPERIENCE -->
+<div id="work" style="background:#0A1628">
+  <section>
+    <div class="section-tag">Work Experience</div>
+    <div class="section-title">Hands-on environments</div>
+    <div class="section-divider"></div>
+    <div class="exp-item">
+      <div class="exp-date">2025–Present</div>
+      <div class="exp-content">
+        <h3>Delivery Associate</h3>
+        <div class="exp-org">Amazon Delivery Station DV3, Fredericksburg, VA</div>
+        <p>Balance active work at Amazon's Fredericksburg delivery station with a full-time engineering course load at ODU. Reinforces time discipline, logistics awareness, and operating reliably under real throughput pressure.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">2024–2025</div>
+      <div class="exp-content">
+        <h3>Host, Busser, and Cook</h3>
+        <div class="exp-org">Red Robin</div>
+        <p>Worked multiple positions across front-of-house and kitchen, rotating between hosting, bussing, and line cooking. Built speed, adaptability, and the composure to execute under peak rush without dropping standards.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" style="background:#0A1628">
+  <section>
+    <div class="section-tag">Projects</div>
+    <div class="section-title">What I've built</div>
+    <div class="section-divider"></div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-tag">Engineering</div>
+        <h3>Solar-Powered Drone</h3>
+        <p>Led early system architecture development, coordinating four engineering students across multiple universities to define subsystem roles and a structured prototype roadmap. Conducted preliminary power budget modeling using solar irradiance data and hybrid battery storage tradeoffs to validate feasibility for sustained daylight operation. Developed initial CAD airframe concepts prioritizing weight-to-power ratio and material selection.</p>
+        <div class="tech-stack">
+          <span class="tech">CAD</span>
+          <span class="tech">Systems Architecture</span>
+          <span class="tech">Power Budget Modeling</span>
+          <span class="tech">Cross-University Team</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Self-Directed Build</div>
+        <h3>AxiomAI</h3>
+        <p>Exploratory B2B outreach automation system built to learn end-to-end AI tooling. Modeled three connected agents (lead gen, outreach, reply filtering) using Apollo, Instantly, Amazon SES, n8n, and the Claude API. Not a commercial product, a testing ground for AI systems design.</p>
+        <div class="tech-stack">
+          <span class="tech">Apollo</span>
+          <span class="tech">Instantly</span>
+          <span class="tech">Amazon SES</span>
+          <span class="tech">n8n</span>
+          <span class="tech">Claude API</span>
+          <span class="tech">Cursor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SKILLS -->
+<div id="skills">
+  <section>
+    <div class="section-tag">Skills</div>
+    <div class="section-title">Current stack</div>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+
+      <div class="skill-stack">
+        <div class="stack-header">
+          <div class="stack-title">Engineering</div>
+          <div class="stack-tag">Building</div>
+        </div>
+        <div class="skill-tier-group">
+          <div class="tier-label tier-working"><span class="tier-dot"></span>Working knowledge</div>
+          <div class="skill-list-tier">
+            <span class="skill-tag">Excel data analysis</span>
+            <span class="skill-tag">Power budget modeling</span>
+            <span class="skill-tag">Technical documentation</span>
+          </div>
+        </div>
+        <div class="skill-tier-group">
+          <div class="tier-label tier-exploring"><span class="tier-dot"></span>Exploring</div>
+          <div class="skill-list-tier">
+            <span class="skill-tag">CAD</span>
+            <span class="skill-tag">Fusion 360</span>
+            <span class="skill-tag">AutoCAD</span>
+            <span class="skill-tag">Engineering drawings</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-stack">
+        <div class="stack-header">
+          <div class="stack-title">AI &amp; systems</div>
+          <div class="stack-tag">Building</div>
+        </div>
+        <div class="skill-tier-group">
+          <div class="tier-label tier-working"><span class="tier-dot"></span>Working knowledge</div>
+          <div class="skill-list-tier">
+            <span class="skill-tag">Claude API</span>
+            <span class="skill-tag">n8n / Make</span>
+            <span class="skill-tag">Amazon SES</span>
+            <span class="skill-tag">Shopify</span>
+            <span class="skill-tag">Meta Ads</span>
+          </div>
+        </div>
+        <div class="skill-tier-group">
+          <div class="tier-label tier-exploring"><span class="tier-dot"></span>Exploring</div>
+          <div class="skill-list-tier">
+            <span class="skill-tag">Apollo</span>
+            <span class="skill-tag">Instantly</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ORGANIZATIONS -->
+<div id="organizations" style="background:#0A1628">
+  <section>
+    <div class="section-tag">Organizations</div>
+    <div class="section-title">Where I'm invested</div>
+    <div class="section-divider"></div>
+    <div class="orgs-grid">
+      <div class="org-card leadership">
+        <div class="org-initial">S</div>
+        <span class="org-role-pill role-leadership">Incoming Treasurer</span>
+        <h4>SUMMIT</h4>
+        <p>Executive board, 2026–2027 term. Previously co-facilitated a GBM as the first freshman to hold that role.</p>
+      </div>
+      <div class="org-card leadership">
+        <div class="org-initial">SGA</div>
+        <span class="org-role-pill role-leadership">Incoming Rep</span>
+        <h4>Student Government Association</h4>
+        <p>Representative, College of Business. Sworn in Spring 2026, starting Fall 2026.</p>
+      </div>
+      <div class="org-card">
+        <div class="org-initial">N</div>
+        <span class="org-role-pill role-member">Member</span>
+        <h4>NSBE</h4>
+        <p>National Society of Black Engineers. Professional network and technical development.</p>
+      </div>
+      <div class="org-card">
+        <div class="org-initial">D</div>
+        <span class="org-role-pill role-member">Member</span>
+        <h4>DMC</h4>
+        <p>Developing Men of Color. Brotherhood, accountability, and leadership development.</p>
+      </div>
+      <div class="org-card">
+        <div class="org-initial">G</div>
+        <span class="org-role-pill role-member">Associated Student Body</span>
+        <h4>Ghana Student Association</h4>
+        <p>Cultural community and heritage connection at ODU.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <section>
+    <div class="section-tag">Contact</div>
+    <div class="section-title">Let's connect</div>
+    <div class="section-divider" style="margin:0 auto 24px"></div>
+    <p class="contact-sub">Open to Summer 2026 engineering internships. Targeting MITRE, energy companies, and AI-adjacent roles. If you're building something serious, reach out.</p>
+    <div class="contact-btns">
+      <a href="https://www.linkedin.com/in/kwame-asare-b3847724a" target="_blank" class="contact-btn">LinkedIn</a>
+      <a href="mailto:kasar002@odu.edu" class="contact-btn">kasar002@odu.edu</a>
+      <a href="https://docs.google.com/document/d/1-VcmUlTyTGNH0RVyTsy1tXjVCYRdV7XukILdEzFNvc0/edit?usp=sharing" target="_blank" class="contact-btn">View Resume</a>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Kwame Asare · Old Dominion University · ME Class of 2029</p>
+  <div class="footer-links">
+    <a href="#hero">Back to top</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>
